@@ -16,41 +16,50 @@ def printList(list):
         
 
 class Staff():	
-	def __init__(self, name, gender, shift):
+	def __init__(self, name, gender):
 		self.name = name
 		self.gender = gender
-		self.shift = shift
+		
 
-def areas(self):
-        morningDuties = ["toilets", "kitchens", "dormitories"]
-        afternoonDuties = ["corridors", "bedrooms", "living spaces"]
+class Salary(Staff):
+    def __init__(self, name, pay):
+        super().__init__(name, pay)
+        self.pay = pay
 
-        if self.shift == "morning":
-            finalString = printList(morningDuties)
-            print("Hello " + self.name + ", your areas include " + finalString)
-        elif self.shift == "afternoon":
-            finalString = printList(afternoonDuties)
-            print("Hello " + self.name + ", your areas include " + finalString)
-        else:
-            print("failed")
-
-class Salary():
-    def __init__(self, rate, hours):
-        self.rate = rate
-        self.hours = hours
 
 def calculatePay(self):
-    salary = self.rate * self.hours
-    if len(str(salary)) <= 5:
-        print("Every week before tax, £" + str(salary) + "0 is taken home")
+    hourlyRate = self.pay / 2080
+    print("hourlyRate of " + self.name + " is £" + "{:.2f}".format(hourlyRate))
+ 
+
+class Duties(Staff):
+    def __init__(self, name, gender, shift):
+        super().__init__(name, gender)
+        self.shift = shift
+
+
+def areas(self):
+    morningDuties = ["toilets", "kitchens", "dormitories"]
+    afternoonDuties = ["corridors", "bedrooms", "living spaces"]
+
+    if self.shift == "morning":
+        finalString = printList(morningDuties)
+        print("Hello " + self.name + ", your areas include " + finalString)
+    elif self.shift == "afternoon":
+        finalString = printList(afternoonDuties)
+        print("Hello " + self.name + ", your areas include " + finalString)
     else:
-        print("Every week before tax, £" + str(salary) + " is taken home")
+        print("failed")
 
         
+Ian = Staff("Ian", "Male")
+
+IanDuties = Duties(Ian.name, Ian.gender, "afternoon")
+areas(IanDuties)
+
+IanSalary = Salary(Ian.name, 50000)
+calculatePay(IanSalary)
+
+
+
         
-Ian = Staff("Ian", "Male", "afternoon")
-areas(Ian)
-
-
-IanPay = Salary(8.92, 42)
-calculatePay(IanPay)
